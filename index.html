@@ -1,0 +1,11 @@
+---
+layout: home
+---
+
+<h1>static-jekyll-gulp</h1>
+
+<ul class="list-unstyled">
+  {% for link in site.data.nav_links %}
+    <li><a href="{{ site.url }}{{ link.href }}">{{ link.title }}</a></li>
+  {% endfor %}
+</ul>

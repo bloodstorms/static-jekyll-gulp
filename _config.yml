@@ -1,0 +1,19 @@
+exclude: [Gemfile, Gemfile.lock, .babelrc, gulpfile.babel.js, package.json, package-lock.json, postcss.config.js, yarn.lock, node_modules]
+
+# Dependencies
+markdown: kramdown
+highlighter: rouge
+
+kramdown:
+  auto_ids: true
+
+# Permalinks
+permalink: pretty
+
+# Gems
+gems:
+
+# Site
+title: static-jekyll-gulp
+description: description
+authors: Cody Lopez

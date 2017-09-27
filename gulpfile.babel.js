@@ -9,6 +9,7 @@ const svgo         = require('gulp-svgo');
 const rename       = require('gulp-rename');
 const concat       = require('gulp-concat');
 const uglify       = require('gulp-uglify');
+const browserSync  = require('browser-sync').create();
 
 const includePaths = {
   // Compile files/globs into build.
@@ -20,6 +21,7 @@ const includePaths = {
 }
 
 const globs = {
+  html: './**/*.html',
   js: [
     ...includePaths.js,
     './_assets/js/**/*.js'
@@ -39,10 +41,21 @@ const paths = {
 
 // Default
 gulp.task('default', ['js', 'sass', 'images', 'svg'], () => {
+  browserSync.init({
+    server: {
+      baseDir: './_site'
+    }
+  });
+  gulp.watch(globs.html, ['bs-reload']);
   gulp.watch(globs.js, ['js']);
   gulp.watch(globs.stylesheets, ['sass']);
   gulp.watch(globs.images, ['images']);
   gulp.watch(globs.svg, ['svg']);
+});
+
+// BrowserSync reload
+gulp.task('bs-reload', () => {
+  browserSync.reload();
 });
 
 // JavaScripts
